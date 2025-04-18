@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [tailwindcss(), react()],
   resolve: {
     extensions: ['.js', '.jsx', '.json']  
-  }
+  },
+  base: import.meta.VITE_BASE_PATH || '/',
  
 })
