@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import Layout from './components/Layout.jsx';
-import Loading from './pages/Loading.jsx';
+import Layout from './components/Layout';
+import Loading from './pages/Loading';
 
 // Lazy load components for route-based code splitting
-const Home = lazy(() => import('./pages/Home.jsx'));
-const About = lazy(() => import('./pages/About.jsx'));
-const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
