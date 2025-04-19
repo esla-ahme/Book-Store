@@ -22,6 +22,18 @@ const Topbar = () => {
       title: 'Books',
       subtitle: 'Admin > Books',
     },
+    '/store/:storeId': {
+      title: 'Store Inventory',
+      subtitle: 'Admin > Store Inventory',
+    },
+    '/browsebooks': {
+      title: 'Browse Books',
+      subtitle: 'Shop > Books',
+    },
+    '/browseauthors': {
+      title: 'Browse Authors',
+      subtitle: 'Shop > Authors',
+    },
   }
 
   return (
