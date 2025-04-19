@@ -1,37 +1,15 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import Footer from './Footer/Footer';
+import Sidelist from './Sidelist/Sidelist';
+import Topbar from './Topbar';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen">
-      <nav className="bg-blue-600 p-6">
-        <ul className="flex space-x-4">
-          <li className='ml-4'>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? 'text-white font-bold' : 'text-white'
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? 'text-white font-bold' : 'text-white'
-              }
-            >
-              About
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <main className="p-4 min-h-[calc(100vh-4rem)]">
+    <div className="h-screen flex ">
+              <Sidelist />
+      <main className="h-screen overflow-auto flex-1 bg-background pt-8 px-6">
+        <Topbar />
         <Outlet />
       </main>
-      <Footer />
     </div>
   );
 }
