@@ -3,10 +3,10 @@ import Footer from './Footer/Footer';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-blue-600 p-4">
+    <div className="min-h-screen">
+      <nav className="bg-blue-600 p-6">
         <ul className="flex space-x-4">
-          <li>
+          <li className='ml-4'>
             <NavLink
               to="/"
               className={({ isActive }) =>
