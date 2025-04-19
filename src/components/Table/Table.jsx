@@ -1,7 +1,7 @@
 import { useReactTable, getCoreRowModel, getSortedRowModel, getPaginationRowModel, flexRender } from '@tanstack/react-table';
 import { useMemo, useState, useRef, useEffect } from 'react';
 
-export default function Table({ data, columns }) {
+export default function Table({ data, columns,onRowClick}) {
   const [rowSelection, setRowSelection] = useState({});
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -79,7 +79,9 @@ export default function Table({ data, columns }) {
         <table className="w-full border-collapse border border-gray-200">
             <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
-                    <tr key={headerGroup.id} className="bg-gray-100">
+                    <tr key={headerGroup.id} className="bg-gray-100"
+                    
+                    >
                         {headerGroup.headers.map((header) => (
                             <th
                                 key={header.id}
@@ -102,7 +104,23 @@ export default function Table({ data, columns }) {
             </thead>
             <tbody className="bg-white">
                 {table.getRowModel().rows.map((row) => (
-                    <tr key={row.id} className="hover:bg-gray-50">
+                    <tr key={row.id} className="hover:bg-gray-50 pointer-cursor"
+                    onClick={(e) => {
+                        
+                        // Prevent row click when clicking on interactive elements (e.g., buttons, inputs)
+                        if (
+                          e.target.tagName === 'BUTTON' ||
+                          e.target.tagName === 'INPUT' ||
+                          e.target.closest('button') ||
+                          e.target.closest('input')
+                        ) {
+                          return;
+                        }
+                       
+                          onRowClick(e, row.original);
+                        
+                      }}
+                    >
                         {row.getVisibleCells().map((cell) => (
                             <td key={cell.id} className="border border-gray-200 p-2 text-gray-800">
                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}

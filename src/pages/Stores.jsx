@@ -5,8 +5,16 @@ import Table from '../components/Table/Table';
 import { useSearchParams } from 'react-router-dom';
 import Modal from '../components/Modal';
 import TableActions from '../components/ActionButton/TableActions';
+import { useNavigate } from 'react-router-dom';
 
 const Stores = () => {
+  const navigate = useNavigate();
+  
+
+  const handleViewStoreInventory = (storeId) => {
+    navigate(`/store/${storeId}`);
+  };  
+
   // State declarations
   const [stores, setStores] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -148,8 +156,7 @@ const Stores = () => {
     // Split the address by commas
     const parts = address.split(',').map((part) => part.trim());
 
-    // Expected format: "address_1[, address_2], city, state zip"
-    // At least 3 parts are required: address_1, city, state zip
+
     if (parts.length < 3) {
       return { address_1: address, address_2: '', city: '', state: '', zip: '' };
     }
@@ -167,10 +174,8 @@ const Stores = () => {
       zip = '';
     }
 
-    // Second-to-last part is the city
     const city = parts[parts.length - 2];
 
-    // First part is address_1, second part (if exists) is address_2
     const address_1 = parts[0];
     const address_2 = parts.length > 3 ? parts[1] : '';
 
@@ -210,12 +215,14 @@ const Stores = () => {
     });
     closeModal();
   };
-
+  const onRowClick = (e, rw) => {
+    handleViewStoreInventory(rw.id);
+}
   return (
     <div className="py-6">
       <Header addNew={openModal} title="Stores List" />
       {stores.length > 0 ? (
-        <Table data={filteredStores} columns={columns} />
+        <Table data={filteredStores} columns={columns} onRowClick={onRowClick} />
       ) : (
         <Loading />
       )}

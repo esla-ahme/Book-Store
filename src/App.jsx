@@ -9,7 +9,7 @@ const Stores = lazy(() => import('./pages/Stores'));
 const Books = lazy(() => import('./pages/Books'));
 const Authors = lazy(() => import('./pages/Authors'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
+const StoreInventory = lazy(() => import('./pages/StoreInventory'));
 function App() {
   return (
     <Router>
@@ -20,7 +20,7 @@ function App() {
             <Route path="/stores" element={<Stores />} />
             <Route path="/books" element={<Books />} />
             <Route path="/author" element={<Authors />} />
-           
+            <Route path="/store/:storeId" element={<StoreInventory />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

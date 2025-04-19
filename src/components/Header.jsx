@@ -1,7 +1,7 @@
 import React from 'react'
 import Searchbar from './Searchbar'
 
-const Header = ({addNew, title}) => {
+const Header = ({addNew, title, buttonTitle}) => {
 
   return (
     <div className='flex justify-between items-center'>
@@ -14,7 +14,7 @@ const Header = ({addNew, title}) => {
         addNew()
     }}
 
-    >Add New {title.split(" ")[0]}</button>
+    >{buttonTitle || `Add New ${title.split(" ")[0]}`}</button>
 
 
 
