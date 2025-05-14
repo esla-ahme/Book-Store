@@ -11,7 +11,7 @@ const Authors = lazy(() => import('./pages/Authors'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const StoreInventory = lazy(() => import('./pages/StoreInventory'));
 const BrowseBooks = lazy(() => import('./pages/BrowseBooks'));
-const BrowsAuthors = lazy(() => import('./pages/BrowseAuthors'));
+const BrowseAuthors = lazy(() => import('./pages/BrowseAuthors'));
 const BrowseStores = lazy(() => import('./pages/BrowseStores'));
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path="/author" element={<Authors />} />
             <Route path="/store/:storeId" element={<StoreInventory />} />
             <Route path="/browsebooks" element={<BrowseBooks />} />
-            <Route path="/browseauthors" element={<BrowsAuthors />} />
+            <Route path="/browseauthors" element={<BrowseAuthors />} />
             <Route path="/browsestores" element={<BrowseStores />} />
             <Route path="*" element={<NotFound />} />
           </Route>
